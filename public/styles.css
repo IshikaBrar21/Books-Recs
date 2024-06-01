@@ -1,0 +1,161 @@
+body {
+    background-color:black;
+    margin:10px;
+    padding: 0px;
+}
+
+.icon {
+    height: 100px;
+    border-radius: 1.5px;
+    border-width: 0.5px;
+    flex-grow: 0;
+}
+
+#container {
+    display: block;
+    position:absolute;
+}
+#container-2 {
+    display: flex;
+    flex-direction:column;
+    margin-left: 20px;
+}
+
+.contents {
+    display:block;
+    max-height: max-content;
+    margin-top: 2dvh;
+}
+.cloud {
+    margin-top: 10px;
+    background-color: #FFD369;
+    box-shadow: 8px 11px rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    padding: 5px;
+    min-width: 35vw;
+    /* Changed from 35dvw to 35vw */
+    height:70dvh;
+    max-height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position:relative;
+    /* to ensure pseudo-elements are positioned relative to .cloud */
+}
+
+.cloud::after {
+    content: "Welcome to I 🐝 Reads!";
+    position: relative;
+    /* absolute positioning */
+    border-radius: inherit;
+    transform: translate(-20vw, -20vh);
+    font-size: 40px;
+    font-family: "Dancing Script", cursive;
+    font-optical-sizing: auto;
+    font-weight:800;
+    font-style:normal;
+    width:max-content;
+    color: black;
+    background-color: antiquewhite;
+}
+
+.cloud::before {
+    position: relative;
+    /* absolute positioning */
+    border-radius: inherit;
+    transform: translate(0.23dvw, 0dvh);
+    /* Adjust position to center */
+    content: "Hey there, Ishika here! This is my website where I share some of my favorite reads. I am an avid reader thanks to COVID. Since 2020, I’ve read nearly 200 books, and these are just a few I’d like to share with fellow bookworms. Hope you find a Book of your choice from my list of favourites. Enjoy! (I am a Fan of Murakami, you can tell ;))  Contact me : ishikabrar3@gmail.com";
+    font-size: 27px;
+    font-family: "Dancing Script", cursive;
+    font-optical-sizing: auto;
+    font-weight:400;
+    font-style: normal;
+    color:black;
+}
+#myCarousel{
+    position:relative;
+    display: flex;
+    margin-top: 3dvh;
+}
+.bee {
+    display:flex;
+    flex-direction:row;
+    background-color: #FFD369;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    animation: 12s linear 0s infinite alternate animating-multiple-properties;
+}
+
+@keyframes animating-multiple-properties {
+    from {
+        transform: translate(90vw, 20vh);
+        background-color: #FFD369;
+        filter: brightness(95%);
+    }
+
+    to {
+        transform: translate(3vw, -20vh);
+        background-color: orange;
+
+    }
+}
+
+.container-3 {
+    margin-top: 13dvh;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: row;
+    border:#ECEFF1 solid 1px;
+}
+
+.summary {
+    min-height: 250px;
+    text-overflow: inherit;
+    max-width: max-content;
+}
+
+.covers {
+    justify-content: space-around;
+}
+
+.title {
+    text-decoration: none;
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #ECEFF1;
+    font-size: xx-large;
+
+}
+.caraousel-image{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 400px;
+    transform: translate(-50%, 0%);
+}
+
+.review {
+    display: flex;
+    margin:10px;
+    padding: auto;
+    max-width: fit-content;
+    font-size: 16px;
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #ECEFF1;
+}
+#buzzMessage{
+    font-family: "Playfair Display", serif;
+    font-size: small;
+    background-color: whitesmoke;
+    width:max-content;
+    border-radius: 5%;
+    height:max-content;
+}
