@@ -11,14 +11,23 @@ app.use(express.urlencoded({ extended: true }));//helps to use the https protoco
 app.use(express.static('./public'));
 app.use(bodyParser.urlencoded({ extended: true }));//data will be encoded as well
 
-const db = new pg.Client({
-    user: "postgres",
-    host: "localhost",
-    database: "books",
-    password: "Aishacodes@893210",
-    port: 5432,
+import dotenv from 'dotenv';
+import pkg from 'pg';
+
+const { Pool } = pkg;
+
+dotenv.config();
+
+const pool = new Pool({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT,
 });
-db.connect();
+
+// Rest of your code
+
 //REST APIs GET POST PUT DELETE
 
 app.get("/", async (req, res) => {
@@ -28,7 +37,7 @@ app.get("/", async (req, res) => {
         console.log("The size of the response data is:", response.rows.length);
 
         const result = [];
-        const des_result= [];
+        const des_result = [];
         for (let i = 0; i < response.rows.length; i++) {
             const isbn = response.rows[i].isbn;
             const bookInfo = await fetchBookInfo(isbn);
@@ -37,7 +46,7 @@ app.get("/", async (req, res) => {
                 des_result.push(bookInfo.description);
             }
         }
-        res.render("index", { joke: result,review: des_result});
+        res.render("index", { joke: result, review: des_result });
         console.log(result);
         console.log(des_result);
     } catch (err) {
@@ -55,9 +64,10 @@ async function fetchBookInfo(isbn) {
         if (bookData.totalItems > 0) {
             const book = bookData.items[0].volumeInfo;
             if (book.imageLinks && book.imageLinks.thumbnail) {
-                return { thumbnailUrl: book.imageLinks.thumbnail, 
-                description: book.description
-            };
+                return {
+                    thumbnailUrl: book.imageLinks.thumbnail,
+                    description: book.description
+                };
             }
         }
         return null; // No book cover available
